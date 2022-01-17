@@ -127,3 +127,27 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+level1_track/
+level1_detect/
+level2_track/
+level2_detect/
+level3_track/
+level3_detect/
+level4_track/
+level4_detect/
+level5_track/
+level5_detect/
+level6_track/
+level6_detect/
+level1.txt
+level2.txt
+level3.txt
+level4.txt
+level5.txt
+level6.txt
+get_data.py
+video(1080p).mp4
+yolo_detect.py
+dataset/
+yolov3.*
+yolov4.weights
