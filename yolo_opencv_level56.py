@@ -125,6 +125,8 @@ def get_iou(bbox_ai, bbox_gt):
     return max(iou_area/all_area, 0)
 
 def level5():
+    path = args.folder+"_result.txt"
+    f = open(path, 'w')
     target_list = [[13,130,317,354,635], [12,197,287,370,699], [11,546,291,235,573], [29,718,270,245,616]]
     # print(target_list)
     dirs = os.listdir(args.folder)
@@ -212,9 +214,18 @@ def level5():
 
                 # print(image_cur_path + " Target "+ str(id) + " x: " + str(target_box[0]) + " y: " + str(target_box[1]) + " w: " + str(target_box[2]) + " h: " + str(target_box[3]))  
 
-        # print(target_list)
+        print(target_list)
+        for target in target_list:
+            f.write(str(dirs[dir_num].split('.')[0][5:]))
+            f.write(', ')
+            for info in target[:-1]:
+                f.write(str(info))
+                f.write(', ')
+            f.write(str(target[-1]))
+            f.write('\n')
         draw_target(image, target_list)
         cv2.imwrite(args.folder + "_track/"+dir, image)
+    f.close()
 
 def main():
     global classes, COLORS

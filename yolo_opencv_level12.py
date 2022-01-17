@@ -106,6 +106,8 @@ def yolo_detect(image):
     return indices, boxes
 
 def level1():
+    path = args.folder+"_result.txt"
+    f = open(path, 'w')
     target_list = [[20,1723,274,202,553]]
     # print(target_list)
     dirs = os.listdir(args.folder)
@@ -185,10 +187,21 @@ def level1():
                 # print(image_cur_path + " Target "+ str(id) + " x: " + str(target_box[0]) + " y: " + str(target_box[1]) + " w: " + str(target_box[2]) + " h: " + str(target_box[3]))  
 
         print(target_list)
+        for target in target_list:
+            f.write(str(dirs[dir_num].split('.')[0][5:]))
+            f.write(', ')
+            for info in target[:-1]:
+                f.write(str(info))
+                f.write(', ')
+            f.write(str(target[-1]))
+            f.write('\n')
         draw_target(image, target_list)
         cv2.imwrite(args.folder + "_track/"+dir, image)
+    f.close()
 
 def level2():
+    path = args.folder+"_result.txt"
+    f = open(path, 'w')
     target_list = [[20,1723,274,202,553]]
     # print(target_list)
     dirs = os.listdir(args.folder)
@@ -267,9 +280,19 @@ def level2():
 
                 # print(image_cur_path + " Target "+ str(id) + " x: " + str(target_box[0]) + " y: " + str(target_box[1]) + " w: " + str(target_box[2]) + " h: " + str(target_box[3]))  
 
-        # print(target_list)
+        print(target_list)
+        print(dirs[dir_num])
+        for target in target_list:
+            f.write(str(dirs[dir_num].split('.')[0][5:]))
+            f.write(', ')
+            for info in target[:-1]:
+                f.write(str(info))
+                f.write(', ')
+            f.write(str(target[-1]))
+            f.write('\n')
         draw_target(image, target_list)
         cv2.imwrite(args.folder + "_track/"+dir, image)    
+    f.close()
 
 def main():
     global classes, COLORS
