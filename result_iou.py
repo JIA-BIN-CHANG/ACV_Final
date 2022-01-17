@@ -6,6 +6,10 @@ ap.add_argument('-f', '--folder', required=True,
                 help = 'path to the folder need to be detected')
 args = ap.parse_args()
 
+def id(name):
+    num = name.split(',')[1]
+    return int(num)
+
 gt_path = args.folder + ".txt"
 detect_path = args.folder + "_result.txt"
 
@@ -21,5 +25,7 @@ for line in detect_f.readlines():
     detect_list.append(line)
 detect_f.close()
 
+detect_list.sort(key=id)
+
 print(gt_list[:2])
-print(detect_list[0].split(',')[1])
+print(detect_list[:5])
