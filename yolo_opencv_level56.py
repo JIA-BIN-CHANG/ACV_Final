@@ -5,12 +5,11 @@ import os
 import tensorflow as tf
 import math
 from numpy import zeros
-#AA
+import time
+
 ap = argparse.ArgumentParser()
 ap.add_argument('-f', '--folder', required=True,
                 help = 'path to the folder need to be detected')
-# ap.add_argument('-i', '--image', required=True,
-#                 help = 'path to input image')
 ap.add_argument('-c', '--config', required=True,
                 help = 'path to yolo config file')
 ap.add_argument('-w', '--weights', required=True,
@@ -42,7 +41,6 @@ def draw_target(img, target_list):
         w = target_list[id][3]
         h = target_list[id][4]
 
-        # color = COLORS[label]
         if (id == 0):
             cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,255), 2)
 
@@ -128,9 +126,7 @@ def get_iou(bbox_ai, bbox_gt):
 
 def level5():
     target_list = [[13,130,317,354,635], [12,197,287,370,699], [11,546,291,235,573], [29,718,270,245,616]]
-    print(target_list)
-    # print(f'targetx before for {target_x}')
-    # print(target_x[1])
+    # print(target_list)
     dirs = os.listdir(args.folder)
     dirs.sort(key=getint)
     for dir_num,dir in enumerate(dirs[:]):
@@ -147,7 +143,7 @@ def level5():
                 
                 distance_gap = 9999
                 size_gap = 9999
-                print("******************************************************")
+                # print("******************************************************")
                 for i in indices:
                     box = boxes[i]
                     x = int(box[0])
@@ -155,25 +151,24 @@ def level5():
                     w = int(box[2])
                     h = int(box[3])
                     if class_ids[i] == 0:
-                        print(image_cur_path + " class: " + str(class_ids[i]) + " x: " + str(x) + " y: " + str(y) + " w: " + str(w) + " h: " + str(h))
+                        # print(image_cur_path + " class: " + str(class_ids[i]) + " x: " + str(x) + " y: " + str(y) + " w: " + str(w) + " h: " + str(h))
                         current_distance_gap = math.sqrt(((target_x+0.5*target_w) - (x+0.5*w))**2 + ((target_y+0.5*target_h) - (y+0.5*h))**2)
-                        # current_distance_gap = math.sqrt((target_x - x)**2 + (target_y - y)**2) + math.sqrt((target_x+target_w - x+w)**2 + (target_y+target_h - y+h)**2)
                         current_size_gap = abs((target_w - w) + (target_h - h))
-                        print(image_cur_path + " class: " + str(class_ids[i]) + " distance: " + str(current_distance_gap) + " area: " + str(current_size_gap))
+                        # print(image_cur_path + " class: " + str(class_ids[i]) + " distance: " + str(current_distance_gap) + " area: " + str(current_size_gap))
                         result = get_iou([target_x, target_y, target_w, target_h], [x, y, w, h])
-                        print(result)
+                        # print(result)
                         if current_distance_gap < distance_gap and current_size_gap <= size_gap:
                             distance_gap = current_distance_gap
                             size_gap = current_size_gap
                             target_box = box
                             # print("get candidate")
-                print("******************************************************")
+                # print("******************************************************")
                 target_list[id][1] = int(target_box[0])
                 target_list[id][2] = int(target_box[1])
                 target_list[id][3] = int(target_box[2])
                 target_list[id][4] = int(target_box[3])
                 # print("-------------------------------------")
-                print(image_cur_path + " Target "+ str(id) + " x: " + str(target_box[0]) + " y: " + str(target_box[1]) + " w: " + str(target_box[2]) + " h: " + str(target_box[3]))  
+                # print(image_cur_path + " Target "+ str(id) + " x: " + str(target_box[0]) + " y: " + str(target_box[1]) + " w: " + str(target_box[2]) + " h: " + str(target_box[3]))  
 
             else:
 
@@ -183,7 +178,7 @@ def level5():
                 distance_gap = 9999
                 size_gap = 9999
                 get_candidate = False
-                print("******************************************************")
+                # print("******************************************************")
                 for i in indices:
                     box = boxes[i]
                     x = int(box[0])
@@ -193,31 +188,31 @@ def level5():
                     if class_ids[i] == 0:
                         # print(distance_gap)
                         # print(size_gap)
-                        print(image_cur_path + " class: " + str(class_ids[i]) + " x: " + str(x) + " y: " + str(y) + " w: " + str(w) + " h: " + str(h))
+                        # print(image_cur_path + " class: " + str(class_ids[i]) + " x: " + str(x) + " y: " + str(y) + " w: " + str(w) + " h: " + str(h))
                         current_distance_gap = math.sqrt(((target_x+0.5*target_w) - (x+0.5*w))**2 + ((target_y+0.5*target_h) - (y+0.5*h))**2)
                         # current_distance_gap = math.sqrt((target_x - x)**2 + (target_y - y)**2)
                         current_size_gap = abs((target_w - w) + (target_h - h))
                         iou = get_iou([target_x, target_y, target_w, target_h], [x, y, w, h])
-                        print(iou)
-                        print(image_cur_path + " class: " + str(class_ids[i]) + " distance: " + str(current_distance_gap) + " area: " + str(current_size_gap))
+                        # print(iou)
+                        # print(image_cur_path + " class: " + str(class_ids[i]) + " distance: " + str(current_distance_gap) + " area: " + str(current_size_gap))
                         if current_distance_gap < distance_gap:# and (current_size_gap < size_gap or abs(current_size_gap - size_gap) < 400):
                             if iou > 0.5:
                                 distance_gap = current_distance_gap
                                 size_gap = current_size_gap
                                 target_box = box
-                                print("get candidate")
+                                # print("get candidate")
                                 get_candidate = True
 
-                print("******************************************************")
+                # print("******************************************************")
                 if (get_candidate == True):
                     target_list[id][1] = int(target_box[0])
                     target_list[id][2] = int(target_box[1])
                     target_list[id][3] = int(target_box[2])
                     target_list[id][4] = int(target_box[3])
 
-                print(image_cur_path + " Target "+ str(id) + " x: " + str(target_box[0]) + " y: " + str(target_box[1]) + " w: " + str(target_box[2]) + " h: " + str(target_box[3]))  
+                # print(image_cur_path + " Target "+ str(id) + " x: " + str(target_box[0]) + " y: " + str(target_box[1]) + " w: " + str(target_box[2]) + " h: " + str(target_box[3]))  
 
-        print(target_list)
+        # print(target_list)
         draw_target(image, target_list)
         cv2.imwrite(args.folder + "_track/"+dir, image)
 
@@ -225,12 +220,10 @@ def main():
     global classes, COLORS
     global target_x, target_y, target_w, target_h, target_id
 
-    if (args.folder == "level3"):
-        level5()
     if (args.folder == "level5"):
+        start = time.time()
         level5()
-    if (args.folder == "level6"):
-        level5()
+        print(args.folder + " time: " + str(time.time()-start))
     
 
 main()

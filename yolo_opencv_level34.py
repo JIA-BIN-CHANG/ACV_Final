@@ -5,12 +5,11 @@ import os
 import tensorflow as tf
 import math
 from numpy import zeros
-#AA
+import time
+#
 ap = argparse.ArgumentParser()
 ap.add_argument('-f', '--folder', required=True,
                 help = 'path to the folder need to be detected')
-# ap.add_argument('-i', '--image', required=True,
-#                 help = 'path to input image')
 ap.add_argument('-c', '--config', required=True,
                 help = 'path to yolo config file')
 ap.add_argument('-w', '--weights', required=True,
@@ -126,7 +125,7 @@ def level3():
         image_cur_path = args.folder + "/" + dirs[dir_num]
         image = cv2.imread(image_cur_path)
         indices, boxes = yolo_detect(cv2.imread(image_cur_path))
-        print(len(indices))
+        # print(len(indices))
         for id in range(len(target_list)):
             # target_id = target_list[id][0]
             target_x = target_list[id][1]
@@ -288,7 +287,7 @@ def level4():
                                 target_box = box
                                 print("get candidate")
                                 get_candidate = True
-                            if current_distance_gap < 150 and current_size_gap < 50:
+                            if current_distance_gap < 150 and current_size_gap < 30:
                                 distance_gap = current_distance_gap
                                 size_gap = current_size_gap
                                 target_box = box
@@ -314,9 +313,14 @@ def main():
     global target_x, target_y, target_w, target_h, target_id
 
     if (args.folder == "level3"):
+        start = time.time()
         level3()
+        print(args.folder + " time: " + str(time.time()-start))
     if (args.folder == "level4"):
+        start = time.time()
         level4()
+        print(args.folder + " time: " + str(time.time()-start))
+        
     
 
 main()
