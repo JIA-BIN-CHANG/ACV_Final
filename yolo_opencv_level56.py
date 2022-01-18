@@ -227,6 +227,109 @@ def level5():
         cv2.imwrite(args.folder + "_track/"+dir, image)
     f.close()
 
+def level6():
+    path = args.folder+"_result.txt"
+    f = open(path, 'w')
+    target_list = [[13,130,317,354,635], [12,197,287,370,699], [11,546,291,235,573], [29,718,270,245,616]]
+    # print(target_list)
+    dirs = os.listdir(args.folder)
+    dirs.sort(key=getint)
+    for dir_num,dir in enumerate(dirs[:]):
+        image_cur_path = args.folder + "/" + dirs[dir_num]
+        image = cv2.imread(image_cur_path)
+        indices, boxes = yolo_detect(cv2.imread(image_cur_path))
+        for id in range(len(target_list)):
+            # target_id = target_list[id][0]
+            target_x = target_list[id][1]
+            target_y = target_list[id][2]
+            target_w = target_list[id][3]
+            target_h = target_list[id][4]
+            if (dir_num == 0):
+                
+                distance_gap = 9999
+                size_gap = 9999
+                # print("******************************************************")
+                for i in indices:
+                    box = boxes[i]
+                    x = int(box[0])
+                    y = int(box[1])
+                    w = int(box[2])
+                    h = int(box[3])
+                    if class_ids[i] == 0:
+                        # print(image_cur_path + " class: " + str(class_ids[i]) + " x: " + str(x) + " y: " + str(y) + " w: " + str(w) + " h: " + str(h))
+                        current_distance_gap = math.sqrt(((target_x+0.5*target_w) - (x+0.5*w))**2 + ((target_y+0.5*target_h) - (y+0.5*h))**2)
+                        current_size_gap = abs((target_w - w) + (target_h - h))
+                        # print(image_cur_path + " class: " + str(class_ids[i]) + " distance: " + str(current_distance_gap) + " area: " + str(current_size_gap))
+                        result = get_iou([target_x, target_y, target_w, target_h], [x, y, w, h])
+                        # print(result)
+                        if current_distance_gap < distance_gap and current_size_gap <= size_gap:
+                            distance_gap = current_distance_gap
+                            size_gap = current_size_gap
+                            target_box = box
+                            # print("get candidate")
+                # print("******************************************************")
+                target_list[id][1] = int(target_box[0])
+                target_list[id][2] = int(target_box[1])
+                target_list[id][3] = int(target_box[2])
+                target_list[id][4] = int(target_box[3])
+                # print("-------------------------------------")
+                # print(image_cur_path + " Target "+ str(id) + " x: " + str(target_box[0]) + " y: " + str(target_box[1]) + " w: " + str(target_box[2]) + " h: " + str(target_box[3]))  
+
+            else:
+
+                image_cur_path = args.folder + "/" + dirs[dir_num]
+                image = cv2.imread(image_cur_path)
+            
+                distance_gap = 9999
+                size_gap = 9999
+                get_candidate = False
+                # print("******************************************************")
+                for i in indices:
+                    box = boxes[i]
+                    x = int(box[0])
+                    y = int(box[1])
+                    w = int(box[2])
+                    h = int(box[3])
+                    if class_ids[i] == 0:
+                        # print(distance_gap)
+                        # print(size_gap)
+                        # print(image_cur_path + " class: " + str(class_ids[i]) + " x: " + str(x) + " y: " + str(y) + " w: " + str(w) + " h: " + str(h))
+                        current_distance_gap = math.sqrt(((target_x+0.5*target_w) - (x+0.5*w))**2 + ((target_y+0.5*target_h) - (y+0.5*h))**2)
+                        # current_distance_gap = math.sqrt((target_x - x)**2 + (target_y - y)**2)
+                        current_size_gap = abs((target_w - w) + (target_h - h))
+                        iou = get_iou([target_x, target_y, target_w, target_h], [x, y, w, h])
+                        # print(iou)
+                        # print(image_cur_path + " class: " + str(class_ids[i]) + " distance: " + str(current_distance_gap) + " area: " + str(current_size_gap))
+                        if current_distance_gap < distance_gap:# and (current_size_gap < size_gap or abs(current_size_gap - size_gap) < 400):
+                            if iou > 0.5:
+                                distance_gap = current_distance_gap
+                                size_gap = current_size_gap
+                                target_box = box
+                                # print("get candidate")
+                                get_candidate = True
+
+                # print("******************************************************")
+                if (get_candidate == True):
+                    target_list[id][1] = int(target_box[0])
+                    target_list[id][2] = int(target_box[1])
+                    target_list[id][3] = int(target_box[2])
+                    target_list[id][4] = int(target_box[3])
+
+                # print(image_cur_path + " Target "+ str(id) + " x: " + str(target_box[0]) + " y: " + str(target_box[1]) + " w: " + str(target_box[2]) + " h: " + str(target_box[3]))  
+
+        print(target_list)
+        for target in target_list:
+            f.write(str(dirs[dir_num].split('.')[0][5:]))
+            f.write(', ')
+            for info in target[:-1]:
+                f.write(str(info))
+                f.write(', ')
+            f.write(str(target[-1]))
+            f.write('\n')
+        draw_target(image, target_list)
+        cv2.imwrite(args.folder + "_track/"+dir, image)
+    f.close()
+
 def main():
     global classes, COLORS
     global target_x, target_y, target_w, target_h, target_id
@@ -234,6 +337,10 @@ def main():
     if (args.folder == "level5"):
         start = time.time()
         level5()
+        print(args.folder + " time: " + str(time.time()-start))
+    if (args.folder == "level6"):
+        start = time.time()
+        level6()
         print(args.folder + " time: " + str(time.time()-start))
     
 
