@@ -125,7 +125,8 @@ def get_iou(bbox_ai, bbox_gt):
     return max(iou_area/all_area, 0)
 
 def level5():
-    path = args.folder+"_result.txt"
+    output_path = os.path.join(os.getcwd(), "result/")
+    path = output_path + args.folder+"_result.txt"
     f = open(path, 'w')
     target_list = [[13,130,317,354,635], [12,197,287,370,699], [11,546,291,235,573], [29,718,270,245,616]]
     # print(target_list)
@@ -224,13 +225,14 @@ def level5():
             f.write(str(target[-1]))
             f.write('\n')
         draw_target(image, target_list)
-        if not os.path.exists(args.folder + "_track"):
-            os.makedirs(args.folder + "_track")
-        cv2.imwrite(args.folder + "_track/"+dir, image)
+        if not os.path.exists(output_path + args.folder + "_track"):
+            os.makedirs(output_path + args.folder + "_track")
+        cv2.imwrite(output_path + args.folder + "_track/"+dir, image)
     f.close()
 
 def level6():
-    path = args.folder+"_result.txt"
+    output_path = os.path.join(os.getcwd(), "result/")
+    path = output_path + args.folder+"_result.txt"
     f = open(path, 'w')
     target_list = [[13,130,317,354,635], [12,197,287,370,699], [11,546,291,235,573], [29,718,270,245,616]]
     # print(target_list)
@@ -329,9 +331,9 @@ def level6():
             f.write(str(target[-1]))
             f.write('\n')
         draw_target(image, target_list)
-        if not os.path.exists(args.folder + "_track"):
-            os.makedirs(args.folder + "_track")
-        cv2.imwrite(args.folder + "_track/"+dir, image)
+        if not os.path.exists(output_path + args.folder + "_track"):
+            os.makedirs(output_path + args.folder + "_track")
+        cv2.imwrite(output_path + args.folder + "_track/"+dir, image)
     f.close()
 
 def main():

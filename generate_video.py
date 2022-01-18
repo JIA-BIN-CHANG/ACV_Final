@@ -14,12 +14,13 @@ args = ap.parse_args()
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 
-output_name = args.folder + '_result.avi'
+output_path = os.path.join(os.getcwd(), "result/")
+output_name = output_path + args.folder + '_result.avi'
 print(output_name)
 out = cv2.VideoWriter(output_name, fourcc, 30.0, (1920, 1080))
 
 
-track_dir = args.folder + '_track'
+track_dir = output_path + args.folder + '_track'
 os.chdir(os.path.join(track_dir))
 path = os.path.join(os.getcwd())
 

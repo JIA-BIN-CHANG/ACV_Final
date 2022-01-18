@@ -93,25 +93,25 @@ Runing the following command to compare **detected bounding box text file** and 
 `$ python3 result_iou.py --folder {LEVEL_NAME}`
 
 ### Level1
-![](level1_result.png)
+![](result/level1_result.png)
 [level1 result video](https://drive.google.com/file/d/126GOoOJGd5_yHWTFSTvYLlLbiQOE9hwe/view?usp=sharing)
 
 ### Level2
-![](level2_result.png)
+![](result/level2_result.png)
 [level2 result video](https://drive.google.com/file/d/1kt2BnRigdg-q7O_D-Ca2_fVk7F-ewunE/view?usp=sharing)
 
 ### Level3
-![](level3_result.png)
+![](result/level3_result.png)
 [level3 result video](https://drive.google.com/file/d/16FiyYYx3Bb_UF-l7p24Ng02dtW6XYD9P/view?usp=sharing)
 
 ### Level4
-![](level4_result.png)
+![](result/level4_result.png)
 [level4 result video](https://drive.google.com/file/d/1rxn5KHgcN0MZhv8zOOhTsv20k2HlPxS-/view?usp=sharing)
 
 ### Level5
-![](level5_result.png)
+![](result/level5_result.png)
 [level5 result video](https://drive.google.com/file/d/1rxn5KHgcN0MZhv8zOOhTsv20k2HlPxS-/view?usp=sharing)
 
 ### Level6
-![](level6_result.png)
+![](result/level6_result.png)
 [level6 result video](https://drive.google.com/file/d/1Q4gZAHulHNfoJi7gDZ4h-ZAaE1_UqHIs/view?usp=sharing)

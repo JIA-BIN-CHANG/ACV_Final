@@ -99,7 +99,8 @@ def yolo_detect(image):
     return indices, boxes
 
 def level1():
-    path = args.folder+"_result.txt"
+    output_path = os.path.join(os.getcwd(), "result/")
+    path = output_path + args.folder+"_result.txt"
     f = open(path, 'w')
     target_list = [[20,1723,274,202,553]]
     # print(target_list)
@@ -189,13 +190,14 @@ def level1():
             f.write(str(target[-1]))
             f.write('\n')
         draw_target(image, target_list)
-        if not os.path.exists(args.folder + "_track"):
-            os.makedirs(args.folder + "_track")
-        cv2.imwrite(args.folder + "_track/"+dir, image)
+        if not os.path.exists(output_path + args.folder + "_track"):
+            os.makedirs(output_path + args.folder + "_track")
+        cv2.imwrite(output_path + args.folder + "_track/"+dir, image)
     f.close()
 
 def level2():
-    path = args.folder+"_result.txt"
+    output_path = os.path.join(os.getcwd(), "result/")
+    path = output_path + args.folder+"_result.txt"
     f = open(path, 'w')
     target_list = [[20,1723,274,202,553]]
     # print(target_list)
@@ -286,9 +288,9 @@ def level2():
             f.write(str(target[-1]))
             f.write('\n')
         draw_target(image, target_list)
-        if not os.path.exists(args.folder + "_track"):
-            os.makedirs(args.folder + "_track")
-        cv2.imwrite(args.folder + "_track/"+dir, image)    
+        if not os.path.exists(output_path + args.folder + "_track"):
+            os.makedirs(output_path + args.folder + "_track")
+        cv2.imwrite(output_path + args.folder + "_track/"+dir, image)    
     f.close()
 
 def main():

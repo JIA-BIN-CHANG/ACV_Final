@@ -30,8 +30,9 @@ def get_iou(bbox_ai, bbox_gt):
 
 
 def level12():
+    output_path = os.path.join(os.getcwd(), "result/")
     gt_path = args.folder + ".txt"
-    detect_path = args.folder + "_result.txt"
+    detect_path = output_path + args.folder + "_result.txt"
 
     gt_f = open(gt_path, 'r')
     gt_list = []
@@ -69,11 +70,12 @@ def level12():
     plt.ylabel("IoU")
     
    
-    plt.savefig(args.folder + "_result.png")
+    plt.savefig(output_path + args.folder + "_result.png")
 
 def level34():
+    output_path = os.path.join(os.getcwd(), "result/")
     gt_path = args.folder + ".txt"
-    detect_path = args.folder + "_result.txt"
+    detect_path = output_path + args.folder + "_result.txt"
 
     gt_f = open(gt_path, 'r')
     gt_list = []
@@ -117,11 +119,12 @@ def level34():
     plt.title(args.folder + " Tracking IoU   Average IoU: " + str(average_iou))
     plt.xlabel("Frame")
     plt.ylabel("IoU")
-    plt.savefig(args.folder + "_result.png")
+    plt.savefig(output_path + args.folder + "_result.png")
 
 def level56():
+    output_path = os.path.join(os.getcwd(), "result/")
     gt_path = args.folder + ".txt"
-    detect_path = args.folder + "_result.txt"
+    detect_path = output_path + args.folder + "_result.txt"
 
     gt_f = open(gt_path, 'r')
     gt_list = []
@@ -178,7 +181,7 @@ def level56():
     plt.title(args.folder + " Tracking IoU   Average IoU: " + str(average_iou))
     plt.xlabel("Frame")
     plt.ylabel("IoU")
-    plt.savefig(args.folder + "_result.png")
+    plt.savefig(output_path + args.folder + "_result.png")
 
 def main():
     if (args.folder == "level1" or args.folder == "level2"):
