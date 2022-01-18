@@ -173,7 +173,7 @@ def level56():
     plt.title(args.folder + " Tracking IoU")
     plt.xlabel("Frame")
     plt.ylabel("IoU")
-    plt.savefig(args.folder + " _result.png")
+    plt.savefig(args.folder + "_result.png")
 
 def main():
     if (args.folder == "level1" or args.folder == "level2"):
