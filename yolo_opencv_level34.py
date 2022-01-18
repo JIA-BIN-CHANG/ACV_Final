@@ -6,7 +6,7 @@ import tensorflow as tf
 import math
 from numpy import zeros
 import time
-#
+
 ap = argparse.ArgumentParser()
 ap.add_argument('-f', '--folder', required=True,
                 help = 'path to the folder need to be detected')
