@@ -180,7 +180,7 @@ def level1():
 
                 # print(image_cur_path + " Target "+ str(id) + " x: " + str(target_box[0]) + " y: " + str(target_box[1]) + " w: " + str(target_box[2]) + " h: " + str(target_box[3]))  
 
-        print(target_list)
+        # print(target_list)
         for target in target_list:
             f.write(str(dirs[dir_num].split('.')[0][5:]))
             f.write(', ')
@@ -277,8 +277,7 @@ def level2():
 
                 # print(image_cur_path + " Target "+ str(id) + " x: " + str(target_box[0]) + " y: " + str(target_box[1]) + " w: " + str(target_box[2]) + " h: " + str(target_box[3]))  
 
-        print(target_list)
-        print(dirs[dir_num])
+        # print(target_list)
         for target in target_list:
             f.write(str(dirs[dir_num].split('.')[0][5:]))
             f.write(', ')

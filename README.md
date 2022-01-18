@@ -80,7 +80,7 @@ $ python3 yolo_opencv_level56.py --folder level5 --config yolov4.cfg --weights y
 Run the followig command, you will get **level6_track** directory with the tracking result and **level6_result.txt** with all the bounding box information. 
 **Command:**
 ```
-$ python3 yolo_opencv_level12.py --folder level6 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+$ python3 yolo_opencv_level56.py --folder level6 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
 ```
 
 ## Output Result Video
@@ -115,3 +115,6 @@ Runing the following command to compare **detected bounding box text file** and 
 ### Level6
 ![](result/level6_result.png)
 [level6 result video](https://drive.google.com/file/d/1Q4gZAHulHNfoJi7gDZ4h-ZAaE1_UqHIs/view?usp=sharing)
+
+## Time Evaluation
+![](result/time_evaluation.png)
