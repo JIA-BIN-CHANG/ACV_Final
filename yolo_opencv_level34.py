@@ -119,7 +119,7 @@ def get_iou(bbox_ai, bbox_gt):
 def level3():
     path = args.folder+"_result.txt"
     f = open(path, 'w')
-    target_list = [[12,1097,360,160,414], [6,-38,239,229,760]]
+    target_list = [[2,1097,360,160,414], [6,-38,239,229,760]]
     # print(target_list)
     dirs = os.listdir(args.folder)
     dirs.sort(key=getint)
