@@ -94,7 +94,7 @@ Runing the following command to compare **detected bounding box text file** and 
 
 ### Level1
 ![](level1_result.png)
-![](level1_result.avi)
+https://drive.google.com/file/d/126GOoOJGd5_yHWTFSTvYLlLbiQOE9hwe/view?usp=sharing
 
 ### Level2
 ![](level2_result.png)
