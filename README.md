@@ -14,7 +14,7 @@ Editor: Visual Studio Code
 * opencv 4.5.5
 * tensorflow 2.7.0
 
-`pip install opencv-python tensorflow imageio`
+`pip install opencv-python tensorflow`
 
 ## Yolov4 Setup
 Download the pre-trained YOLO v4 weights file from this link and place it in the current directory or you can directly download to the current directory in terminal using
