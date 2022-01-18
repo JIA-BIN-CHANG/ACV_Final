@@ -92,3 +92,20 @@ Runing the following command to compare **detected bounding box text file** and 
 **Command:**
 `$ python3 result_iou.py --folder {LEVEL_NAME}`
 
+### Level1
+![](level1_result.png)
+
+### Level2
+![](level2_result.png
+
+### Level3
+![](level3_result.png
+
+### Level4
+![](level4_result.png
+
+### Level5
+![](level5_result.png
+
+### Level6
+![](level6_result.png

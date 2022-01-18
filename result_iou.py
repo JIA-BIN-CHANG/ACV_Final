@@ -66,7 +66,7 @@ def level12():
     plt.title(args.folder + " Tracking IoU")
     plt.xlabel("Frame")
     plt.ylabel("IoU")
-    plt.savefig(args.folder + " Result.png")
+    plt.savefig(args.folder + "_result.png")
 
 def level34():
     gt_path = args.folder + ".txt"
@@ -113,7 +113,7 @@ def level34():
     plt.title(args.folder + " Tracking IoU")
     plt.xlabel("Frame")
     plt.ylabel("IoU")
-    plt.savefig(args.folder + " Result.png")
+    plt.savefig(args.folder + "_result.png")
 
 def level56():
     gt_path = args.folder + ".txt"
@@ -173,7 +173,7 @@ def level56():
     plt.title(args.folder + " Tracking IoU")
     plt.xlabel("Frame")
     plt.ylabel("IoU")
-    plt.savefig(args.folder + " Result.png")
+    plt.savefig(args.folder + " _result.png")
 
 def main():
     if (args.folder == "level1" or args.folder == "level2"):
