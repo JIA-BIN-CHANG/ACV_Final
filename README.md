@@ -1,2 +1,94 @@
-# ACV_Final
-How to use
+# ACV_Final_Project
+
+## Environment
+OS: Windows 11
+CPU: Intel i9-11900KF
+GPU: Nvidia GeForce RTX 3060
+Editor: Visual Studio Code
+
+**Note:** The computatoinal time depends on different hardwares
+
+## Dependencies
+* Python 3.8.10
+* Yolov4
+* opencv 4.5.5
+* tensorflow 2.7.0
+
+`pip install opencv-python tensorflow`
+
+## Yolov4 Setup
+Download the pre-trained YOLO v4 weights file from this link and place it in the current directory or you can directly download to the current directory in terminal using
+```
+$ wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights
+```
+
+
+## Level1 & Level2
+**Command Format:** 
+`python3 yolo_opencv_level12.py --folder {LEVEL_NAME} --config {PATH_TO_CONFIG} --weights {PATH_TO_WEIGHTS} --classes {PATH_TO_CLASSES}`
+
+### Level1 
+
+Run the followig command, you will get **level1_track** directory with the tracking result and **level1_result.txt** with all the bounding box information. 
+**Command:**
+```
+$ python3 yolo_opencv_level12.py --folder level1 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+
+### Level2
+
+Run the followig command, you will get **level2_track** directory with the tracking result and **level2_result.txt** with all the bounding box information. 
+**Command:**
+```
+$ python3 yolo_opencv_level12.py --folder level2 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+
+## Level3 & Level4
+**Command Format:** 
+`python3 yolo_opencv_level34.py --folder {LEVEL_NAME} --config {PATH_TO_CONFIG} --weights {PATH_TO_WEIGHTS} --classes {PATH_TO_CLASSES}`
+
+### Level3
+
+Run the followig command, you will get **level3_track** directory with the tracking result and **level3_result.txt** with all the bounding box information. 
+**Command:**
+```
+$ python3 yolo_opencv_level34.py --folder level3 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+
+### Level4
+
+Run the followig command, you will get **level4_track** directory with the tracking result and **level4_result.txt** with all the bounding box information. 
+**Command:**
+```
+$ python3 yolo_opencv_level34.py --folder level4 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+
+## Level5 & Level6
+**Command Format:** 
+`python3 yolo_opencv_level56.py --folder {LEVEL_NAME} --config {PATH_TO_CONFIG} --weights {PATH_TO_WEIGHTS} --classes {PATH_TO_CLASSES}`
+
+### Level5
+
+Run the followig command, you will get **level5_track** directory with the tracking result and **level5_result.txt** with all the bounding box information. 
+**Command:**
+```
+$ python3 yolo_opencv_level56.py --folder level5 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+
+### Level6
+
+Run the followig command, you will get **level6_track** directory with the tracking result and **level6_result.txt** with all the bounding box information. 
+**Command:**
+```
+$ python3 yolo_opencv_level12.py --folder level6 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+
+## Output Result Video
+Run the the following command to generate the result video with **VideoWriter**
+`$ python3 generate_video.py --folder {LEVEL_NAME}`
+
+## IoU Evaluation
+Runing the following command to compare **detected bounding box text file** and **ground truth text file**.
+**Command:**
+`$ python3 result_iou.py --folder {LEVEL_NAME}`
+

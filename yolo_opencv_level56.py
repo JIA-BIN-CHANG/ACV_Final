@@ -224,6 +224,8 @@ def level5():
             f.write(str(target[-1]))
             f.write('\n')
         draw_target(image, target_list)
+        if not os.path.exists(args.folder + "_track"):
+            os.makedirs(args.folder + "_track")
         cv2.imwrite(args.folder + "_track/"+dir, image)
     f.close()
 
@@ -327,6 +329,8 @@ def level6():
             f.write(str(target[-1]))
             f.write('\n')
         draw_target(image, target_list)
+        if not os.path.exists(args.folder + "_track"):
+            os.makedirs(args.folder + "_track")
         cv2.imwrite(args.folder + "_track/"+dir, image)
     f.close()
 
