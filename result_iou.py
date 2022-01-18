@@ -58,14 +58,17 @@ def level12():
         frame_label.append(int(detect_list[num].split(',')[1]))
         frame_iou.append(get_iou(list(map(int, detect_list[num].rstrip('\n').split(',')[2:6])), list(map(int, gt_list[num].rstrip('\n').split(',')[2:6]))))
 
-    print(frame_seq[:20])
-    print(frame_iou[:20])
+    # print(frame_seq[:20])
+    # print(frame_iou[:20])
 
-    line = plt.plot(frame_seq, frame_iou)
-    plt.legend(line, frame_label)
-    plt.title(args.folder + " Tracking IoU")
+    average_iou = sum(frame_iou)/len(frame_iou)
+    plt.plot(frame_seq, frame_iou)
+    plt.legend(['20'])
+    plt.title(args.folder + " Tracking IoU   Average IoU: " + str(average_iou))
     plt.xlabel("Frame")
     plt.ylabel("IoU")
+    
+   
     plt.savefig(args.folder + "_result.png")
 
 def level34():
@@ -85,10 +88,10 @@ def level34():
     detect_f.close()
 
     detect_list.sort(key=id)
-    print(len(detect_list))
+    # print(len(detect_list))
 
-    print(gt_list[:10])
-    print(detect_list[:10])
+    # print(gt_list[:10])
+    # print(detect_list[:10])
 
     frame_seq = []
     frame_label_1 = []
@@ -107,10 +110,11 @@ def level34():
     # print(frame_seq[:20])
     # print(frame_iou_1[:20])
 
+    average_iou = ((sum(frame_iou_1)/len(frame_iou_1)) + (sum(frame_iou_1)/len(frame_iou_1)))/2
     plt.plot(frame_seq, frame_iou_1)
     plt.plot(frame_seq, frame_iou_2)
     plt.legend(['2', '6'])
-    plt.title(args.folder + " Tracking IoU")
+    plt.title(args.folder + " Tracking IoU   Average IoU: " + str(average_iou))
     plt.xlabel("Frame")
     plt.ylabel("IoU")
     plt.savefig(args.folder + "_result.png")
@@ -165,12 +169,13 @@ def level56():
     # print(frame_seq[:20])
     # print(frame_iou[:20])
 
+    average_iou = ((sum(frame_iou_1)/len(frame_iou_1)) + (sum(frame_iou_2)/len(frame_iou_2)) + (sum(frame_iou_3)/len(frame_iou_3)) + (sum(frame_iou_4)/len(frame_iou_4)))/4
     plt.plot(frame_seq, frame_iou_1)
     plt.plot(frame_seq, frame_iou_2)
     plt.plot(frame_seq, frame_iou_3)
     plt.plot(frame_seq, frame_iou_4)
     plt.legend(['11', '12', '13', '29'])
-    plt.title(args.folder + " Tracking IoU")
+    plt.title(args.folder + " Tracking IoU   Average IoU: " + str(average_iou))
     plt.xlabel("Frame")
     plt.ylabel("IoU")
     plt.savefig(args.folder + "_result.png")
