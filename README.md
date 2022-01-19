@@ -31,16 +31,16 @@ $ wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_opt
 
 Run the followig command, you will get **level1_track** directory with the tracking result and **level1_result.txt** with all the bounding box information. 
 **Command:**
-```python=
-python3 yolo_opencv_level12.py --folder level1 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+$ python3 yolo_opencv_level12.py --folder level1 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
 ```
 
 ### Level2
 
 Run the followig command, you will get **level2_track** directory with the tracking result and **level2_result.txt** with all the bounding box information. 
 **Command:**
-```python=
-python3 yolo_opencv_level12.py --folder level2 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+$ python3 yolo_opencv_level12.py --folder level2 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
 ```
 
 ## Level3 & Level4
@@ -51,16 +51,16 @@ python3 yolo_opencv_level12.py --folder level2 --config yolov4.cfg --weights yol
 
 Run the followig command, you will get **level3_track** directory with the tracking result and **level3_result.txt** with all the bounding box information. 
 **Command:**
-```python=
-python3 yolo_opencv_level34.py --folder level3 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+$ python3 yolo_opencv_level34.py --folder level3 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
 ```
 
 ### Level4
 
 Run the followig command, you will get **level4_track** directory with the tracking result and **level4_result.txt** with all the bounding box information. 
 **Command:**
-```python=
-python3 yolo_opencv_level34.py --folder level4 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+$ python3 yolo_opencv_level34.py --folder level4 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
 ```
 
 ## Level5 & Level6
@@ -71,16 +71,16 @@ python3 yolo_opencv_level34.py --folder level4 --config yolov4.cfg --weights yol
 
 Run the followig command, you will get **level5_track** directory with the tracking result and **level5_result.txt** with all the bounding box information. 
 **Command:**
-```python=
-python3 yolo_opencv_level56.py --folder level5 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+$ python3 yolo_opencv_level56.py --folder level5 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
 ```
 
 ### Level6
 
 Run the followig command, you will get **level6_track** directory with the tracking result and **level6_result.txt** with all the bounding box information. 
 **Command:**
-```python=
-python3 yolo_opencv_level56.py --folder level6 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
+```
+$ python3 yolo_opencv_level56.py --folder level6 --config yolov4.cfg --weights yolov4.weights --classes yolov4.txt
 ```
 
 ## Output Result Video
