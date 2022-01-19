@@ -116,5 +116,8 @@ Runing the following command to compare **detected bounding box text file** and 
 ![](result/level6_result.png)
 [level6 result video](https://drive.google.com/file/d/1Q4gZAHulHNfoJi7gDZ4h-ZAaE1_UqHIs/view?usp=sharing)
 
-## Time Evaluation
+## Time Evaluation RTX 3060
 ![](result/time_evaluation.png)
+
+## Time Evaluation GTX 1070
+![](result/time_evaluation_1070.png)
