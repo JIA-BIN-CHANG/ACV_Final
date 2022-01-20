@@ -25,7 +25,7 @@ $ wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_opt
 
 ## Level1 & Level2
 **Command Format:** 
-`python3 yolo_opencv_level12.py --folder {LEVEL_NAME} --config {PATH_TO_CONFIG} --weights {PATH_TO_WEIGHTS} --classes {PATH_TO_CLASSES}`
+`python3 yolo_opencv_level12.py --folder [LEVEL_NAME] --config [PATH_TO_CONFIG] --weights [PATH_TO_WEIGHTS] --classes [PATH_TO_CLASSES]`
 
 ### Level1 
 
@@ -45,7 +45,7 @@ $ python3 yolo_opencv_level12.py --folder level2 --config yolov4.cfg --weights y
 
 ## Level3 & Level4
 **Command Format:** 
-`python3 yolo_opencv_level34.py --folder {LEVEL_NAME} --config {PATH_TO_CONFIG} --weights {PATH_TO_WEIGHTS} --classes {PATH_TO_CLASSES}`
+`python3 yolo_opencv_level34.py --folder [LEVEL_NAME] --config [PATH_TO_CONFIG] --weights [PATH_TO_WEIGHTS] --classes [PATH_TO_CLASSES]`
 
 ### Level3
 
@@ -65,7 +65,7 @@ $ python3 yolo_opencv_level34.py --folder level4 --config yolov4.cfg --weights y
 
 ## Level5 & Level6
 **Command Format:** 
-`python3 yolo_opencv_level56.py --folder {LEVEL_NAME} --config {PATH_TO_CONFIG} --weights {PATH_TO_WEIGHTS} --classes {PATH_TO_CLASSES}`
+`python3 yolo_opencv_level56.py --folder [LEVEL_NAME] --config [PATH_TO_CONFIG] --weights [PATH_TO_WEIGHTS] --classes [PATH_TO_CLASSES]`
 
 ### Level5
 
@@ -85,12 +85,12 @@ $ python3 yolo_opencv_level56.py --folder level6 --config yolov4.cfg --weights y
 
 ## Output Result Video
 Run the the following command to generate the result video with **VideoWriter**
-`$ python3 generate_video.py --folder {LEVEL_NAME}`
+`$ python3 generate_video.py --folder [LEVEL_NAME]`
 
 ## IoU Evaluation
 Runing the following command to compare **detected bounding box text file** and **ground truth text file**.
 **Command:**
-`$ python3 result_iou.py --folder {LEVEL_NAME}`
+`$ python3 result_iou.py --folder [LEVEL_NAME]`
 
 ### Level1
 ![](result/level1_result.png)
