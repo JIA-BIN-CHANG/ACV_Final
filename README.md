@@ -13,6 +13,7 @@ Editor: Visual Studio Code
 * Yolov4
 * opencv 4.5.5
 * tensorflow 2.7.0
+* matplotlib 3.1.2
 
 `pip install opencv-python tensorflow`
 
