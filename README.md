@@ -1,7 +1,7 @@
 # ACV_Final_Project
 
 ## Environment
-OS: Windows 11
+OS: Ubuntu 20.04
 CPU: Intel i9-11900F
 GPU: Nvidia GeForce RTX 3060
 Editor: Visual Studio Code
