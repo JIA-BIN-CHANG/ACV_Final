@@ -15,7 +15,7 @@ Editor: Visual Studio Code
 * tensorflow 2.7.0
 * matplotlib 3.1.2
 
-`pip install opencv-python tensorflow`
+`pip install opencv-python tensorflow matplotlib`
 
 ## Yolov4 Setup
 Download the pre-trained YOLO v4 weights file from this link and place it in the current directory or you can directly download to the current directory in terminal using
